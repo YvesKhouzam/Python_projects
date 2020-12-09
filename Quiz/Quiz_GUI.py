@@ -4,11 +4,23 @@ root = tk.Tk()
 root.title("Quiz")
 root.iconphoto(False, tk.PhotoImage(file="quiz.png"))
 tk.Label(text="Quiz sur les polygones", bg="grey", fg="black", width=78).grid(row=0, column=0, columnspan=2)
-tk.Label(text='Devinez la figure géométrique', width=70).grid(row=1, column=0)
+tk.Label(text='Devinez la figure géométrique.', width=70).grid(row=1, column=0)
 tk.Label(text="Pointage").grid(row=1, column=1)
 
-questions = ["Une figure à trois côtés s\'appelle:", "Une figure à six côtés s\'appelle:", "Les figures à quatre côtés s\'appelle:\n a) Triangles\n b) Heptagones\n c) Quadrilatères\n d) Hendécagones\n'", "Question 4"]
-answers = ["Triangle", "hexagone", "c", "Réponse 4"]
+questions = ["Une figure à trois côtés s\'appelle:",
+             "Une figure à six côtés s\'appelle:",
+             "Les figures à quatre côtés s\'appelle:\n a) Triangles\n b) Heptagones\n c) Quadrilatères\n d) Hendécagones\n",
+             "Une figure à cinq côtés s\'appelle:",
+             "Une figure à huit côtés s\'appelle:",
+             "Vrai ou faux?  Un énnéagone est une figure géométrique à 11 côtés?"
+             ]
+answers = ["Triangle",
+           "Hexagone",
+           "c",
+           "Pentagone",
+           "Octogone",
+           "Faux"
+           ]
 
 question = tk.StringVar()
 question_no = 0
