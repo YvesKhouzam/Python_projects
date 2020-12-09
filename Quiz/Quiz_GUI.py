@@ -1,39 +1,48 @@
 import tkinter as tk
 
-# Setup de la fenêtre
 root = tk.Tk()
 root.title("Quiz")
 root.iconphoto(False, tk.PhotoImage(file="quiz.png"))
-titre = tk.Label(text="Quiz sur les polynômes", bg="grey", fg="black", width=50).pack()
-sous_titre = tk.Label(text='Devinez la figure géométrique').pack()
+tk.Label(text="Quiz sur les polygones", bg="grey", fg="black", width=78).grid(row=0, column=0, columnspan=2)
+tk.Label(text='Devinez la figure géométrique', width=70).grid(row=1, column=0)
+tk.Label(text="Pointage").grid(row=1, column=1)
 
-# List des questions et des réponses
-questions = ["Question 1", "Question 2", "Question 3", "Question 4"]
-guesses = ["réponse 1", "réponse 2", "réponse 3", "Réponse 4"]
+questions = ["Une figure à trois côtés s\'appelle:", "Une figure à six côtés s\'appelle:", "Les figures à quatre côtés s\'appelle:\n a) Triangles\n b) Heptagones\n c) Quadrilatères\n d) Hendécagones\n'", "Question 4"]
+answers = ["Triangle", "hexagone", "c", "Réponse 4"]
 
-# Déclaration des variables
-score = 0
-num_question = 0
-i = 0
+question = tk.StringVar()
+question_no = 0
+question.set(questions[question_no])
 guess = tk.StringVar()
+message = tk.StringVar()
+score = tk.IntVar()
+attempts = 0
 
 
 def check_answer():
-    global i
-    if guess.get() != guesses[i]:
-        answer_key = tk.Label(text="Try again!").pack()
+    global question_no, attempts
+    if guess.get() == answers[question_no]:
+        message.set("Bonne réponse!")
         guess.set("")
+        score.set(score.get() + 3 - attempts)
+        attempts = 0
+        question_no += 1
+        question.set(questions[question_no])
+    elif attempts < 2 and guess.get() != answers[question_no]:
+        message.set("Mauvaise réponse, Essaie encore, il te reste " + str(2 - attempts) + " essai(s)")
+        guess.set("")
+        attempts += 1
     else:
-        answer_key = tk.Label(text="Bonne réponse!").pack()
-        answer_key = tk.Label(text=" ").pack()
-        i += 1
-        question = tk.Label(text=questions[i]).pack()
-        entryGuess = tk.Entry(root, textvariable=guess).pack()
-        validate = tk.Button(root, text="Valide ta réponse", command=check_answer).pack()
+        message.set("La bonne réponse est: " + answers[question_no])
+        guess.set("")
+        attempts = 0
+        question_no += 1
+        question.set(questions[question_no])
 
 
-question = tk.Label(text=questions[i]).pack()
-entryGuess = tk.Entry(root, textvariable=guess).pack()
-validate = tk.Button(root, text="Valide ta réponse", command=check_answer).pack()
-
+tk.Label(textvariable=question).grid(row=3, column=0)
+tk.Entry(root, textvariable=guess).grid(row=4, column=0)
+tk.Button(root, text="Valide ta réponse", command=check_answer).grid(row=5, column=0)
+tk.Label(textvariable=message).grid(row=6, column=0)
+tk.Label(textvariable=score).grid(row=2, column=1)
 root.mainloop()

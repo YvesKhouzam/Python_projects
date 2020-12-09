@@ -1,17 +1,3 @@
-import tkinter as tk
-
-root = tk.Tk()
-root.title("Les polygones")
-
-t = tk.Text(root, width=50, height=5)
-
-t.grid(row=0, column=0, padx=10, pady=10)
-t.insert(tk.END, "Question: \nNumber 1")
-t.delete(tk.END)
-t.insert(tk.END, "Question: \nNumber 2")
-
-root.mainloop()
-
 def check_guess(guess, answer):
     global score
     global num_question
