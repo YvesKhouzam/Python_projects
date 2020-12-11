@@ -4,7 +4,7 @@ root = tk.Tk()
 root.title("Quiz")
 root.iconphoto(False, tk.PhotoImage(file="quiz.png"))
 tk.Label(text="Quiz sur les polygones", bg="grey", fg="black", width=78).grid(row=0, column=0, columnspan=2)
-tk.Label(text='Devinez la figure géométrique.', width=70).grid(row=1, column=0)
+tk.Label(text="Devinez la figure géométrique.", width=70).grid(row=1, column=0)
 tk.Label(text="Pointage").grid(row=1, column=1)
 
 questions = ["Une figure à trois côtés s\'appelle:",
@@ -28,12 +28,13 @@ question.set(questions[question_no])
 guess = tk.StringVar()
 message = tk.StringVar()
 score = tk.IntVar()
+total = tk.IntVar()
 attempts = 0
 
 
 def check_answer():
     global question_no, attempts
-    if guess.get() == answers[question_no]:
+    if (guess.get()).lower() == answers[question_no].lower():
         message.set("Bonne réponse!")
         guess.set("")
         score.set(score.get() + 3 - attempts)
@@ -49,7 +50,16 @@ def check_answer():
         guess.set("")
         attempts = 0
         question_no += 1
+        if question_no == len(questions):
+            print("fini")
+
+        #    if float(score.get()) > 12: # ((60 / 100) * (score.get() / total)):
+        #       tk.Label(final, text="Bravo, tu as réussi! :) ").pack()
+        #    else:
+        #        tk.Label(final, text="Tu devrais réviser! ;) ").pack()
+        #    tk.Button(text="Fermer", command=exit()).pack()
         question.set(questions[question_no])
+    total.set(" sur " + str(question_no * 3))
 
 
 tk.Label(textvariable=question).grid(row=3, column=0)
@@ -57,4 +67,11 @@ tk.Entry(root, textvariable=guess).grid(row=4, column=0)
 tk.Button(root, text="Valide ta réponse", command=check_answer).grid(row=5, column=0)
 tk.Label(textvariable=message).grid(row=6, column=0)
 tk.Label(textvariable=score).grid(row=2, column=1)
+tk.Label(textvariable=total).grid(row=3, column=1)
+
+# TODO: Mettre fin lorsqu'il ne reste plus de question
+# TODO: "Enter" = Boutton click
+# TODO: Fenêtre finale: "Tu as eu x/y = z% Bravo ou Tu dois réviser!
+# TODO: Mettre une image en fond d'écran
+# TODO: Afficher combien de points pour chaque tentative
 root.mainloop()
