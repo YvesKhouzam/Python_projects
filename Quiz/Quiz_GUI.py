@@ -1,3 +1,4 @@
+import json
 import tkinter as tk
 
 root = tk.Tk()
@@ -7,21 +8,19 @@ tk.Label(text="Quiz sur les polygones", bg="grey", fg="black", width=78).grid(ro
 tk.Label(text="Devinez la figure géométrique.", width=70).grid(row=1, column=0)
 tk.Label(text="Pointage").grid(row=1, column=1)
 
-questions = ["Une figure à trois côtés s\'appelle:",
-             "Une figure à six côtés s\'appelle:",
-             "Les figures à quatre côtés s\'appelle:\n a) Triangles\n b) Heptagones\n c) Quadrilatères\n d) Hendécagones\n",
-             "Une figure à cinq côtés s\'appelle:",
-             "Une figure à huit côtés s\'appelle:",
-             "Vrai ou faux?  Un énnéagone est une figure géométrique à 11 côtés?"
-             ]
-answers = ["Triangle",
-           "Hexagone",
-           "c",
-           "Pentagone",
-           "Octogone",
-           "Faux"
-           ]
 
+# Retourne une liste généréée à partir d'un json selon une clé
+def read_json(path, key):
+    values = []
+    with open(path) as q:
+        data = json.load(q)
+        for entry in data:
+            values.append(entry[key])
+        return values
+
+
+questions = read_json("questions_answers.json", "question")
+answers = read_json("questions_answers.json", "answer")
 question = tk.StringVar()
 question_no = 0
 question.set(questions[question_no])

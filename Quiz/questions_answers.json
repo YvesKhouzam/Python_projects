@@ -1,0 +1,15 @@
+[
+  {"question" : "Une figure à trois côtés s'appelle:"},
+  {"question" : "Une figure à six côtés s'appelle:"},
+  {"question" : "Les figures à quatre côtés s'appelle:\n a) Triangles\n b) Heptagones\n c) Quadrilatères\n d) Hendécagones\n"},
+  {"question" : "Une figure à cinq côtés s'appelle:"},
+  {"question" : "Une figure à huit côtés s'appelle:"},
+  {"question" : "Vrai ou faux?  Un énnéagone est une figure géométrique à 11 côtés?"},
+  {"answer" : "Triangle"},
+  {"answer" : "Hexagone"},
+  {"answer" : "c"},
+  {"answer" : "Pentagone"},
+  {"answer" : "Octogone"},
+  {"answer" : "Faux"}
+]
+
