@@ -1,18 +1,18 @@
 [
     {
-        "question": "Pr\u00e9mom",
+        "question": "Quel est ton pr\u00e9mon?",
         "answer": "Yves"
     },
     {
-        "question": "Quel est ton nom?",
+        "question": "Quel est mon nom de famille?",
         "answer": "Khouzam"
     },
     {
-        "question": "Ville d'habitation?",
+        "question": "Quelle est ma ville d'habitation?",
         "answer": "Vaudreuil"
     },
     {
-        "question": "Sport pr\u00e9f\u00e9r\u00e9?",
+        "question": "Quel est mon sport pr\u00e9f\u00e9r\u00e9?",
         "answer": "Soccer"
     }
 ]
