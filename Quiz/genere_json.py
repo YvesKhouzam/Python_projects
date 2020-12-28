@@ -4,16 +4,16 @@ with open('questions_answers.json', 'w') as file:
     json.dump(
         [
             {
-                "question": "Quel est ton prémon?",
+                "question": "Quel est ton prénom?",
                 "answer": "Yves"
             },
             {
-                "question": "Quel est mon nom de famille?",
+                "question": "Quel est mon nom de famille de Yves?",
                 "answer": "Khouzam"
             },
             {
                 "question": "Quelle est ma ville d'habitation?",
-                "answer": "Vaudreuil"
+                "answer": "Vaudreuil-Dorion"
             },
             {
                 "question": "Quel est mon sport préféré?",

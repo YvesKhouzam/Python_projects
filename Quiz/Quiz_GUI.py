@@ -123,10 +123,12 @@ tk.Label(points_frame, text="2e  essai = 2 pts", bg="red", fg="white", font=("",
 tk.Label(points_frame, text="3e  essai = 1 pt", bg="red", fg="white", font=("", 10, "bold"), width=15, height=2).pack()
 
 # Content - Center Frame
+bg_image = tk.PhotoImage("quiz.png")
+
 tk.Label(center_frame, text="Me connais-tu?", font=("Courier", 22), bg="#123456", fg="white").pack(pady=10)
 tk.Label(center_frame, textvariable=question, bg="#123456", fg="white", font=("Courrier", 14)).pack(pady=10)
 tk.Entry(center_frame, textvariable=guess).pack(pady=10)
-validate = tk.Button(center_frame, text="Valide ta réponse", state=tk.ACTIVE, command=check_answer)
+validate = tk.Button(center_frame, text="Valide ta réponse ou ENTER", state=tk.ACTIVE, command=check_answer)
 validate.pack(pady=10, padx=200)
 message_label = tk.Label(center_frame, textvariable=message, bg="#123456", fg="yellow")
 message_label.pack(pady=10)
@@ -150,12 +152,13 @@ root.mainloop()
 # TODO: Texte plus gros, en couleur(?) - Bande en couleur premier tier et 3e tier - Done!
 # TODO: demander prénom et ajouter Bravo{prénom} - Done!
 #  avec un son (applaudissement ou boooo) - Done!
-# TODO: Mettre une image en fond d'écran
+# TODO: Mettre une image en fond d'écran dans center_frame
 # TODO: animation ou image(main hight five)
 # TODO: Si la réponse est vide: "Écrit quelque chose!"
 # TODO: différents type de réponses
 #  : Réponse courte
 #  : Choix de réponse
 #  : Vrai ou faux
+#  Plein écran:
 
 

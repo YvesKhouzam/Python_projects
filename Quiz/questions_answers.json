@@ -1,15 +1,15 @@
 [
     {
-        "question": "Quel est ton pr\u00e9mon?",
+        "question": "Quel est ton pr\u00e9nom?",
         "answer": "Yves"
     },
     {
-        "question": "Quel est mon nom de famille?",
+        "question": "Quel est mon nom de famille de Yves?",
         "answer": "Khouzam"
     },
     {
         "question": "Quelle est ma ville d'habitation?",
-        "answer": "Vaudreuil"
+        "answer": "Vaudreuil-Dorion"
     },
     {
         "question": "Quel est mon sport pr\u00e9f\u00e9r\u00e9?",
