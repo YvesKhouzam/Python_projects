@@ -1,18 +1,19 @@
 import json
 import tkinter as tk
-from tkinter import BOTH, Canvas
+from PIL import Image, ImageTk
+from tkinter import BOTH, Canvas, font
 from winsound import *
 
 # Setup de la fenêtre
 root = tk.Tk()
-root.geometry("1000x300")
+root.geometry("1100x400")
 root.update_idletasks()
 root_width = root.winfo_width()
 root_height = root.winfo_height()
-root.title("Quiz")
+root.title("Quiz sur les polygones")
 root.iconphoto(False, tk.PhotoImage(file="quiz.png"))
-# root.resizable(0, 0)
-# root.config(bg="#123456")
+root.state('zoomed')
+# root.resizable(1100, 400)
 
 
 # Retourne une liste généréée à partir d'un json selon une clé
@@ -40,6 +41,9 @@ score = tk.IntVar()
 total = tk.IntVar()
 attempts = 0
 your_name = ""
+# font = "georgia"
+# font = "hellosmartie"
+font = "kg happy"
 
 
 def play(file):
@@ -67,27 +71,27 @@ def msg_final():
 def check_answer(event=None):
     global question_no, attempts, your_name
     attempts += 1
-    message_label.config(font=("courier", 14))
-    if question_no == 0:
+    message_label.config(font=(font, 14))
+    if question_no == 0:  # Pour avoir le nom du joueur
         your_name = guess.get()
-        message_label.config(font=("courier", 22))
+        message_label.config(font=(font, 22))
         message.set("Bonjour " + str(your_name) + "! :)")
         guess.set("")
         poser_question()
         attempts = 0
     elif (guess.get()).lower() == answers[question_no].lower():  # Si bonne réponse
         message.set("Bonne réponse!")
-        play("applause7.wav")
         guess.set("")
         score.set(score.get() + 4 - attempts)
         total.set(total.get() + 3)
+        # play("applause7.wav")
         if nbr_questions > 1:
             poser_question()
             attempts = 0
         else:  # Il ne reste plus de questions
             msg_final()
     else:  # Si mauvaise réponse, il reste 1 ou 2 essais
-        play("boo3.wav")
+        # play("boo3.wav")
         if attempts < 2:
             message.set("Mauvaise réponse! \n Essaie encore, il te reste " + str(3 - attempts) + " essais")
             guess.set("")
@@ -116,19 +120,26 @@ center_frame.pack(side=tk.LEFT, fill=BOTH, expand=True)
 right_frame.pack(side=tk.LEFT, fill=BOTH, expand=True)
 
 # Content - Left Frame
-points_frame = tk.LabelFrame(left_frame, text="Pointage", bg="red", fg="white")
+points_frame = tk.LabelFrame(left_frame, text="Pointage", bg="red", fg="white", font=(font, 10))
 points_frame.pack(pady=75)
-tk.Label(points_frame, text="1er essai = 3 pts", bg="red", fg="white", font=("", 10, "bold"), width=15, height=2).pack()
-tk.Label(points_frame, text="2e  essai = 2 pts", bg="red", fg="white", font=("", 10, "bold"), width=15, height=2).pack()
-tk.Label(points_frame, text="3e  essai = 1 pt", bg="red", fg="white", font=("", 10, "bold"), width=15, height=2).pack()
+tk.Label(points_frame, text="1er essai = 3 pts", bg="red", fg="white", font=(font, 10), width=15, height=2).pack()
+tk.Label(points_frame, text="2e  essai = 2 pts", bg="red", fg="white", font=(font, 10), width=15, height=2).pack()
+tk.Label(points_frame, text="3e  essai = 1 pt", bg="red", fg="white", font=(font, 10), width=15, height=2).pack()
 
 # Content - Center Frame
-bg_image = tk.PhotoImage("quiz.png")
-
-tk.Label(center_frame, text="Me connais-tu?", font=("Courier", 22), bg="#123456", fg="white").pack(pady=10)
-tk.Label(center_frame, textvariable=question, bg="#123456", fg="white", font=("Courrier", 14)).pack(pady=10)
-tk.Entry(center_frame, textvariable=guess).pack(pady=10)
-validate = tk.Button(center_frame, text="Valide ta réponse ou ENTER", state=tk.ACTIVE, command=check_answer)
+'''
+# Image as bg
+canvas = tk.Canvas(center_frame, width=600, height=800)
+canvas.pack()
+img = ImageTk.PhotoImage(Image.open("quiz.png").resize((600, 800), Image.ANTIALIAS))
+canvas.background = img
+bg = canvas.create_image(0, 0, anchor=tk.NW, image=img)
+'''
+tk.Label(center_frame, text="Devine la figure géométrique!", font=(font, 22), bg="#123456", fg="white").pack(pady=10)
+tk.Label(center_frame, textvariable=question, bg="#123456", fg="white", font=(font, 14)).pack(pady=10)
+tk.Entry(center_frame, textvariable=guess, width=20, font=(font, 14)).pack(pady=10)
+validate = tk.Button(center_frame, text="Valide ta réponse ou ENTER", bd=8, relief=tk.RAISED, font=(font, 12),
+                     state=tk.ACTIVE, command=check_answer)
 validate.pack(pady=10, padx=200)
 message_label = tk.Label(center_frame, textvariable=message, bg="#123456", fg="yellow")
 message_label.pack(pady=10)
@@ -136,22 +147,19 @@ message_label.pack(pady=10)
 # Content - Right Frame
 score_frame = tk.Frame(right_frame, bg="green")
 score_frame.pack(pady=75)
-tk.Label(score_frame, text="Ton pointage", bg="green", font=("Courier", 14)).pack(pady=5)
-tk.Label(score_frame, textvariable=score, bg="green", font=("Courier", 18, "bold")).pack(pady=5)
+tk.Label(score_frame, text="Ton pointage", bg="green", font=(font, 14)).pack(pady=5)
+tk.Label(score_frame, textvariable=score, bg="green", font=(font, 18, "bold")).pack(pady=5)
 w = Canvas(score_frame, width=20, height=0, bd=0, highlightthickness=0)
 w.pack()
 w.create_line(0, 0, 200, 0, fill="black")
-tk.Label(score_frame, textvariable=total, bg="green", font=("Courier", 18, "bold")).pack(pady=5)
+tk.Label(score_frame, textvariable=total, bg="green", font=(font, 18, "bold")).pack(pady=5)
 
 root.bind('<Return>', check_answer)
 
 root.mainloop()
 
-# TODO: Dessiner la barre de fraction pour le pointage - Done!
-# TODO: Encadrer et centrer la légende - Done !
-# TODO: Texte plus gros, en couleur(?) - Bande en couleur premier tier et 3e tier - Done!
-# TODO: demander prénom et ajouter Bravo{prénom} - Done!
-#  avec un son (applaudissement ou boooo) - Done!
+# TODO: Plein écran: - Done!
+# TODO: Changer le font - Done!
 # TODO: Mettre une image en fond d'écran dans center_frame
 # TODO: animation ou image(main hight five)
 # TODO: Si la réponse est vide: "Écrit quelque chose!"
@@ -159,6 +167,7 @@ root.mainloop()
 #  : Réponse courte
 #  : Choix de réponse
 #  : Vrai ou faux
-#  Plein écran:
-
+# TODO: Bind "esc" to close program
+#  and add button "Fermer" ou "recommencer"
+# TODO: Play sound after printing messsage and updating score
 

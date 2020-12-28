@@ -8,27 +8,40 @@ with open('questions_answers.json', 'w') as file:
                 "answer": "Yves"
             },
             {
-                "question": "Quel est mon nom de famille de Yves?",
-                "answer": "Khouzam"
+                "question": "Une figure à trois côtés s\'appelle: ",
+                "answer": "Triangle"
             },
             {
-                "question": "Quelle est ma ville d'habitation?",
-                "answer": "Vaudreuil-Dorion"
+                "question": "Une figure à six côtés s\'appelle:",
+                "answer": "Hexagone"
             },
             {
-                "question": "Quel est mon sport préféré?",
-                "answer": "Soccer"
+                "question": "Les figures à quatre côtés s\'appelle:\n a) Triangles\n b) Heptagones\n "
+                            "c) Quadrilatères\n d) Hendécagones\n",
+                "answer": "c"
+            },
+            {
+                "question": "Une figure à cinq côtés s\'appelle: ",
+                "answer": "Pentagone"
+            },
+            {
+                "question": "Une figure à huit côtés s\'appelle: ",
+                "answer": "Octogone"
+            },
+            {
+                "question": "Vrai ou faux? \n Un énnéagone est une figure géométrique à 11 côtés?",
+                "answer": "Faux"
             }
 
         ]
         , file, sort_keys=False, indent=4)
 
-#
+
 with open('questions_answers.json', 'r') as file:
     user_data = json.load(file)
     print(user_data)
 
-
+'''
 def read_json(path, key):
     values = []
     with open(path, 'r') as file2:
@@ -40,3 +53,4 @@ def read_json(path, key):
 
 print(read_json("questions_answers.json", "question"))
 
+'''
