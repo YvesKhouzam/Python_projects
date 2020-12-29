@@ -3,6 +3,7 @@ import tkinter as tk
 #from PIL import Image, ImageTk
 from tkinter import BOTH, Canvas, font
 from winsound import *
+from types import SimpleNamespace
 
 root = tk.Tk()
 questionLabel = tk.StringVar()
@@ -21,7 +22,7 @@ font = "kg happy"
 def read_json(path):
     values = []
     with open(path) as q:
-        return json.load(q)        
+        return json.load(q, object_hook=lambda d: SimpleNamespace(**d))        
 
 def play(file):
     return PlaySound(file, SND_FILENAME)
@@ -35,7 +36,7 @@ def poser_question():
         msg_final()
     else:
         questionIndex += 1
-        questionLabel.set(questionAnswerList[questionIndex]["question"])
+        questionLabel.set(questionAnswerList[questionIndex].question)
         guessLabel.set("")
 
 def msg_final():
@@ -61,7 +62,7 @@ def check_answer(event=None):
     attempts += 1
     maxAttempts = 3 # replace with questionAnswerList[questionIndex]["maxAttempts"].get() eventually
    
-    answer = questionAnswerList[questionIndex]["answer"]
+    answer = questionAnswerList[questionIndex].answer
 
     if questionIndex == 0:  # Pour avoir le nom du joueur
         userName = guessLabel.get()
