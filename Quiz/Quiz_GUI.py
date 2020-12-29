@@ -21,8 +21,8 @@ font = "kg happy"
 # Le .json a été créé à partir d'un code dans "genere_json"
 def read_json(path):
     values = []
-    with open(path) as q:
-        return json.load(q, object_hook=lambda d: SimpleNamespace(**d))        
+    with open(path) as file:
+        return json.load(file, object_hook=lambda d: SimpleNamespace(**d))        
 
 def play(file):
     return PlaySound(file, SND_FILENAME)
@@ -54,7 +54,7 @@ def msg_final():
         messageLabel.set(
             userName + " tu devrais réviser! :( \n Tu as eu " + ratioAsString + " %.")
 
-    validate.config(state=tk.DISABLED)  # does not seems to work
+    validate.config(state=tk.DISABLED)  # does not seems to work - validate needed to be global in setUpUI
     root.bind('<Return>', '')
 
 def check_answer(event=None):    
@@ -93,6 +93,7 @@ def check_answer(event=None):
 
 def setupUI():
     # Setup de la fenêtre
+    global validate
     
     root.geometry("1100x400")
     root.update_idletasks()
