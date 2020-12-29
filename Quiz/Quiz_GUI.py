@@ -1,6 +1,6 @@
 import json
 import tkinter as tk
-#from PIL import Image, ImageTk
+# from PIL import Image, ImageTk
 from tkinter import BOTH, Canvas, font
 from winsound import *
 from types import SimpleNamespace
@@ -10,6 +10,7 @@ questionLabel = tk.StringVar()
 guessLabel = tk.StringVar()
 messageLabel = tk.StringVar()
 validate = tk.Button()
+
 score = tk.IntVar()
 total = tk.IntVar()
 
