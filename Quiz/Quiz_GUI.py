@@ -1,6 +1,6 @@
 import json
 import tkinter as tk
-from PIL import Image, ImageTk
+# from PIL import Image, ImageTk
 from tkinter import BOTH, Canvas, font
 from winsound import *
 
@@ -12,7 +12,7 @@ root_width = root.winfo_width()
 root_height = root.winfo_height()
 root.title("Quiz sur les polygones")
 root.iconphoto(False, tk.PhotoImage(file="quiz.png"))
-root.state('zoomed')
+# root.state('zoomed')
 # root.resizable(1100, 400)
 
 
