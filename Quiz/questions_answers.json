@@ -1,30 +1,42 @@
 [
     {
         "question": "Quel est ton pr\u00e9nom?",
-        "answer": "Yves"
+        "answer": "Yves",
+        "type": "askUserName"
     },
     {
-        "question": "Une figure \u00e0 trois c\u00f4t\u00e9s s'appelle: ",
-        "answer": "Triangle"
+        "question": "Un carr\u00e9 est un losange : ",
+        "answer": "True",
+        "type": "trueFalse"
     },
     {
-        "question": "Une figure \u00e0 six c\u00f4t\u00e9s s'appelle:",
-        "answer": "Hexagone"
+        "question": "Une figure \u00e0 trois c\u00f4t\u00e9s s'appelle : ",
+        "answer": "Triangle",
+        "type": "shortAnswer"
     },
     {
-        "question": "Les figures \u00e0 quatre c\u00f4t\u00e9s s'appelle:\n a) Triangles\n b) Heptagones\n c) Quadrilat\u00e8res\n d) Hend\u00e9cagones\n",
-        "answer": "c"
+        "question": "Une figure \u00e0 six c\u00f4t\u00e9s s'appelle :",
+        "answer": "Hexagone",
+        "type": "shortAnswer"
     },
     {
-        "question": "Une figure \u00e0 cinq c\u00f4t\u00e9s s'appelle: ",
-        "answer": "Pentagone"
+        "question": "Les figures \u00e0 quatre c\u00f4t\u00e9s s'appelle :\n a) Triangles\n b) Heptagones\n c) Quadrilat\u00e8res\n d) Hend\u00e9cagones\n",
+        "answer": "c",
+        "type": "multipleChoice"
     },
     {
-        "question": "Une figure \u00e0 huit c\u00f4t\u00e9s s'appelle: ",
-        "answer": "Octogone"
+        "question": "Une figure \u00e0 cinq c\u00f4t\u00e9s s'appelle : ",
+        "answer": "Pentagone",
+        "type": "shortAnswer"
+    },
+    {
+        "question": "Une figure \u00e0 huit c\u00f4t\u00e9s s'appelle : ",
+        "answer": "Octogone",
+        "type": "shortAnswer"
     },
     {
         "question": "Vrai ou faux? \n Un \u00e9nn\u00e9agone est une figure g\u00e9om\u00e9trique \u00e0 11 c\u00f4t\u00e9s?",
-        "answer": "Faux"
+        "answer": "Faux",
+        "type": "trueFalse"
     }
 ]

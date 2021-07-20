@@ -5,32 +5,44 @@ with open('questions_answers.json', 'w') as file:
         [
             {
                 "question": "Quel est ton prénom?",
-                "answer": "Yves"
+                "answer": "Yves",
+                "type": "askUserName"
             },
             {
-                "question": "Une figure à trois côtés s\'appelle: ",
-                "answer": "Triangle"
+                "question": "Un carré est un losange : ",
+                "answer": "True",
+                "type": "trueFalse"
             },
             {
-                "question": "Une figure à six côtés s\'appelle:",
-                "answer": "Hexagone"
+                "question": "Une figure à trois côtés s\'appelle : ",
+                "answer": "Triangle",
+                "type": "shortAnswer"
             },
             {
-                "question": "Les figures à quatre côtés s\'appelle:\n a) Triangles\n b) Heptagones\n "
+                "question": "Une figure à six côtés s\'appelle :",
+                "answer": "Hexagone",
+                "type": "shortAnswer"
+            },
+            {
+                "question": "Les figures à quatre côtés s\'appelle :\n a) Triangles\n b) Heptagones\n "
                             "c) Quadrilatères\n d) Hendécagones\n",
-                "answer": "c"
+                "answer": "c",
+                "type": "multipleChoice"
             },
             {
-                "question": "Une figure à cinq côtés s\'appelle: ",
-                "answer": "Pentagone"
+                "question": "Une figure à cinq côtés s\'appelle : ",
+                "answer": "Pentagone",
+                "type": "shortAnswer"
             },
             {
-                "question": "Une figure à huit côtés s\'appelle: ",
-                "answer": "Octogone"
+                "question": "Une figure à huit côtés s\'appelle : ",
+                "answer": "Octogone",
+                "type": "shortAnswer"
             },
             {
                 "question": "Vrai ou faux? \n Un énnéagone est une figure géométrique à 11 côtés?",
-                "answer": "Faux"
+                "answer": "Faux",
+                "type": "trueFalse"
             }
 
         ]
