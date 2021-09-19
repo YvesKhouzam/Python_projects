@@ -8,17 +8,16 @@ def extract_zones(board):
     for row in range(0, len(board)):
         zone = {"type": "row", "len": len(board[row]) - board[row].count(0), "coord": row}
         insert_sorted(zone, zones)
+
     # extract columns info
-    for col in range(0, 9):
+    for col in range(0, len(board)):
         nr_elements = 0
-        for row in range(0, 9):
+        for row in range(0, len(board)):
             if board[row][col] != 0:
                 nr_elements += 1
-        zone = {}
-        zone["type"] = "col"
-        zone["len"] = nr_elements
-        zone["coord"] = col
+        zone = {"type": "col", "len": nr_elements, "coord": col}
         insert_sorted(zone, zones)
+
     # extract squares info
     for square in generate_square_coords():
         nr_elements = 0
@@ -26,12 +25,9 @@ def extract_zones(board):
             for col in range(square["col_begin"], square["col_end"] + 1):
                 if board[row][col] != 0:
                     nr_elements += 1
-        zone = {}
-        zone["type"] = "square"
-        zone["len"] = nr_elements
-        zone["coord"] = tuple(square.values())
+        zone = {"type": "square", "len": nr_elements, "coord": tuple(square.values())}
         insert_sorted(zone, zones)
-    print(zones)
+
     return zones
 
 
@@ -67,6 +63,7 @@ def insert_possibilities(puzzle, row, col):
             if (possibility in row_elements) or (possibility in col_elements) or (possibility in square_elements):
                 possibilities.remove(possibility)
         if len(possibilities) == 1:
+            # print(row, col, possibilities)
             puzzle[row][col] = possibilities[0]
 
 
@@ -95,7 +92,6 @@ def get_zone_elements(zone_type, coord1, coord2, board):
                         if board[row][col] != 0:
                             elements.append(board[row][col])
                 break
-
     return elements
 
 
@@ -122,7 +118,6 @@ def generate_square_coords():
             col_end = 2
             row_begin += 3
             row_end += 3
-
     return tuple(square_coordinates)
 
 

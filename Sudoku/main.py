@@ -12,7 +12,7 @@ if __name__ == '__main__':
               [0, 0, 0, 0, 0, 1, 0, 0, 4]]
 
     print_board(puzzle)
-    for itrations in range(0, 3):
+    for itrations in range(0, 2):
         zones = extract_zones(puzzle)
         for zone in zones:
             if zone["type"] == "row":
